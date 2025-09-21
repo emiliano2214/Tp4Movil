@@ -1,0 +1,144 @@
+﻿@page "/detalleUsuario"
+@page "/detalleUsuario/{id:int}"
+@using BibliotecaLibro.Shared.Models
+@inject BibliotecaLibro.Servicios.UsuarioServicio usuarioServicio
+@inject NavigationManager Navigation
+
+<div style="text-align:center;">
+    <img src="Images/logo.png" alt="Logo" style="max-width:200px" />
+</div>
+
+<h3>Listado de Usuarios</h3>
+
+<button class="btn btn-success p-3 me-2" @onclick="AgregarUsuario">
+    <img src="Images/Iconos/AddUser.png" width="50" />Agregar
+</button>
+
+<button class="btn btn-primary p-3" @onclick="IrAlMenu">
+    <img src="Images/Iconos/Menu.png" width="50" class="me-1" />
+    Menú
+</button>
+
+@if (usuarios == null)
+{
+    <div class="alert alert-info">Cargando usuarios...</div>
+}
+else if (!usuarios.Any())
+{
+    <div class="alert alert-info">No hay usuarios disponibles.</div>
+}
+else
+{
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>Imagen</th>
+                    <th>Nombre de Usuario</th>
+                    <th>Privilegio</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var usuario in usuarios)
+                {
+                    <tr>
+                        <td>
+                            <img src="@($"Images/Usuarios/{usuario.Img}")" alt="@usuario.NombreUsuario" width="60" />
+                        </td>
+                        <td>@usuario.NombreUsuario</td>
+                        <td>@usuario.Privilegio</td>
+                        <td>
+                            <button class="btn btn-warning p-3 me-2" @onclick="() => EditarUsuario(usuario.IdUsuario)">
+                                <img src="Images/Iconos/Editar.png" width="50" />Editar
+                            </button>
+                            <button class="btn btn-danger p-3" @onclick="() => EliminarUsuario(usuario.IdUsuario)" disabled="@eliminandoUsuario">
+                                <img src="Images/Iconos/DeleteUser.png" width="50" />
+                                @if (eliminandoUsuario)
+                                {
+                                    <span>Eliminando...</span>
+                                }
+                                else
+                                {
+                                    <span>Eliminar</span>
+                                }
+                            </button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+
+@code {
+    [Parameter]
+    public int? id { get; set; }
+
+    private List<UsuarioDTO> usuarios;
+    private bool eliminandoUsuario = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await CargarUsuarios();
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        if (id.HasValue)
+        {
+            var usuario = await usuarioServicio.GetUsuarioAsync(id.Value);
+            usuarios = usuario is not null ? new List<UsuarioDTO> { usuario } : new List<UsuarioDTO>();
+        }
+        else
+        {
+            await CargarUsuarios();
+        }
+    }
+
+    private async Task CargarUsuarios()
+    {
+        usuarios = await usuarioServicio.GetUsuariosAsync();
+    }
+
+    private void AgregarUsuario()
+    {
+        Navigation.NavigateTo("/FormUsuario");
+    }
+
+    private void EditarUsuario(int id)
+    {
+        Navigation.NavigateTo($"/FormUsuario/{id}");
+    }
+
+    private async Task EliminarUsuario(int id)
+    {
+        eliminandoUsuario = true;
+        try
+        {
+            var eliminado = await usuarioServicio.DeleteUsuarioAsync(id);
+            if (eliminado)
+            {
+                // Si estamos mostrando un usuario específico y lo eliminamos,
+                // redirigir a la lista completa
+                if (this.id.HasValue)
+                {
+                    Navigation.NavigateTo("/detalleUsuario");
+                }
+                else
+                {
+                    await CargarUsuarios(); // Recarga la lista actualizada
+                }
+            }
+        }
+        finally
+        {
+            eliminandoUsuario = false;
+        }
+    }
+
+    private void IrAlMenu()
+    {
+        Navigation.NavigateTo("/menu");
+    }
+}

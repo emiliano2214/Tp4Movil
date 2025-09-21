@@ -1,0 +1,41 @@
+﻿@inherits LayoutComponentBase
+
+<!-- Top bar -->
+<div class="top-row ps-3 navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand text-white" href="">BibliotecaLibro</a>
+    </div>
+</div>
+
+<!-- Sidebar -->
+<div class="sidebar bg-dark text-white p-3 d-none d-md-block"
+     style="min-height: 100vh; width: 220px; position: fixed;">
+    <nav class="flex-column">
+        <div class="nav-item my-2">
+            <NavLink class="nav-link text-white" href="usuarios">
+                <i class="bi bi-people-fill"></i> Usuarios
+            </NavLink>
+        </div>
+        <div class="nav-item my-2">
+            <NavLink class="nav-link text-white" href="detalleUsuario">
+                <i class="bi bi-people-fill"></i> Detalle Usuarios
+            </NavLink>
+        </div>
+        <div class="nav-item my-2">
+            <NavLink class="nav-link text-white" href="libros">
+                <i class="bi bi-book-fill"></i> Libros
+            </NavLink>
+        </div>
+        <div class="nav-item my-2">
+            <NavLink class="nav-link text-white" href="detalleLibro">
+                <i class="bi bi-people-fill"></i> Detalle Libro
+            </NavLink>
+        </div>
+        
+    </nav>
+</div>
+
+<!-- Contenido principal -->
+<div class="main-content" style="margin-left: 220px;">
+    @Body
+</div>

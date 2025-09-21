@@ -1,0 +1,124 @@
+﻿@page "/libros"
+@inject BibliotecaLibro.Servicios.LibroServicio libroServicio
+@inject NavigationManager Navigation
+
+<div style="text-align:center;">
+    <img src="Images/logo.png" alt="Logo" style="max-width:200px" />
+</div>
+
+<h3>Lista de Libros</h3>
+
+<button class="btn btn-primary p-3" @onclick="IrAlMenu">
+    <img src="Images/Iconos/Menu.png" width="50" class="me-1" />
+    Menú
+</button>
+
+<div class="libros-container">
+    @if (libros == null)
+    {
+        <div class="alert alert-info">Cargando libros...</div>
+    }
+    else if (libros.Any())
+    {
+        @foreach (var libro in libros)
+        {
+            <div class="card">
+                <img src="@($"Images/Libros/{libro.Imagen}")" alt="@libro.NombreLibro" class="card-img" />
+                <div class="card-body">
+                    <h4>@libro.NombreLibro</h4>
+                    <p>@libro.Descripcion</p>
+                    <small><strong>Fecha de emisión:</strong> @libro.FechaEmision.ToString("dd/MM/yyyy")</small>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <div class="alert alert-info">No hay libros disponibles.</div>
+    }
+</div>
+
+<style>
+    .libros-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 20px;
+        margin-top: 20px;
+    }
+
+    .card {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        transition: transform 0.2s;
+    }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+
+    .card-img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+
+    .card-body {
+        padding: 15px;
+    }
+
+        .card-body h4 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .card-body p {
+            color: #666;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .card-body small {
+            color: #888;
+        }
+</style>
+
+@code {
+    private List<BibliotecaLibro.Shared.Models.LibroDTO> libros;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await CargarLibros();
+    }
+
+    private async Task CargarLibros()
+    {
+        libros = await libroServicio.GetLibrosAsync();
+    }
+
+    private void GoToAddLibro()
+    {
+        Navigation.NavigateTo("/FormLibro");
+    }
+
+    private void EditarLibro(int id)
+    {
+        Navigation.NavigateTo($"/FormLibro/{id}");
+    }
+
+    private async Task EliminarLibro(int id)
+    {
+        var eliminado = await libroServicio.DeleteLibroAsync(id);
+        if (eliminado)
+        {
+            await CargarLibros(); // Actualiza la lista
+        }
+    }
+
+    private void IrAlMenu()
+    {
+        Navigation.NavigateTo("/menu");
+    }
+}

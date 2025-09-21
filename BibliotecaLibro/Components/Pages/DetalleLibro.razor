@@ -1,0 +1,122 @@
+﻿@page "/detalleLibro"
+@using BibliotecaLibro.Shared.Models
+@using BibliotecaLibro.Servicios
+@inject LibroServicio libroServicio
+@inject NavigationManager Navigation
+
+<div style="text-align:center;">
+    <img src="Images/logo.png" alt="Logo" style="max-width:200px" />
+</div>
+
+<h3>Listado de Libros</h3>
+
+<button class="btn btn-success p-3" @onclick="AgregarLibro">
+    <img src="Images/Iconos/AddLib.png" width="50" class="me-1" />
+    Agregar
+</button>
+
+<button class="btn btn-primary p-3" @onclick="IrAlMenu">
+    <img src="Images/Iconos/Menu.png" width="50" class="me-1" />
+    Menú
+</button>
+
+@if (libros == null)
+{
+    <div class="alert alert-info">Cargando libros...</div>
+}
+else if (!libros.Any())
+{
+    <div class="alert alert-info">No hay libros disponibles.</div>
+}
+else
+{
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>Imagen</th>
+                    <th>Título</th>
+                    <th>Descripción</th>
+                    <th>Fecha de Emisión</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var libro in libros)
+                {
+                    <tr>
+                        <td>
+                            <img src="@($"Images/Libros/{libro.Imagen}")" alt="@libro.NombreLibro" width="60" />
+                        </td>
+                        <td>@libro.NombreLibro</td>
+                        <td>@libro.Descripcion</td>
+                        <td>@libro.FechaEmision.ToString("dd/MM/yyyy")</td>
+                        <td>
+                            <button class="btn btn-warning p-3 me-2" @onclick="() => EditarLibro(libro.IdLibro)">
+                                <img src="Images/Iconos/EditLib.png" width="50" />Editar
+                            </button>
+                            <button class="btn btn-danger p-3" @onclick="() => EliminarLibro(libro.IdLibro)" disabled="@eliminandoLibro">
+                                <img src="Images/Iconos/DeleteLib.png" width="50" />
+                                @if (eliminandoLibro)
+                                {
+                                    <span>Eliminando...</span>
+                                }
+                                else
+                                {
+                                    <span>Eliminar</span>
+                                }
+                            </button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+
+@code {
+    private List<LibroDTO> libros;
+    private bool eliminandoLibro = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await CargarLibros();
+    }
+
+    private async Task CargarLibros()
+    {
+        libros = await libroServicio.GetLibrosAsync();
+    }
+
+    private void AgregarLibro()
+    {
+        Navigation.NavigateTo("/FormLibro");
+    }
+
+    private void EditarLibro(int id)
+    {
+        Navigation.NavigateTo($"/FormLibro/{id}");
+    }
+
+    private async Task EliminarLibro(int id)
+    {
+        eliminandoLibro = true;
+        try
+        {
+            var eliminado = await libroServicio.DeleteLibroAsync(id);
+            if (eliminado)
+            {
+                await CargarLibros(); // Recarga la lista actualizada
+            }
+        }
+        finally
+        {
+            eliminandoLibro = false;
+        }
+    }
+
+    private void IrAlMenu()
+    {
+        Navigation.NavigateTo("/menu");
+    }
+}

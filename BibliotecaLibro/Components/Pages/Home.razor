@@ -1,0 +1,27 @@
+﻿@page "/home"
+@inject NavigationManager NavigationManager
+
+<div class="menu-logo">
+        <img src="Images/logo.png" alt="Logo" />
+</div>
+
+<h1 class="mt-4">Bienvenido a tu nueva app</h1>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light mt-4">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Menú Principal</a>
+
+        <!-- Botón para ir al menú -->
+        <button class="btn btn-primary ms-auto" @onclick="IrAlMenu">
+            Ir al Menú
+        </button>
+    </div>
+</nav>
+
+@code {
+    private void IrAlMenu()
+    {
+        NavigationManager.NavigateTo("/libros");
+    }
+}
+

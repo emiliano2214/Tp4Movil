@@ -1,0 +1,384 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\emiab\\source\\repos\\ProgramacionMovil\\TpNuevo\\BibliotecaLibro.Server\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{2C80B26F-20D8-4D56-A07A-B5942BFD3B68}|BibliotecaLibro.Server.csproj|c:\\users\\emiab\\source\\repos\\programacionmovil\\tpnuevo\\bibliotecalibro.server\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2C80B26F-20D8-4D56-A07A-B5942BFD3B68}|BibliotecaLibro.Server.csproj|solutionrelative:controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2C80B26F-20D8-4D56-A07A-B5942BFD3B68}|BibliotecaLibro.Server.csproj|c:\\users\\emiab\\source\\repos\\programacionmovil\\tpnuevo\\bibliotecalibro.server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2C80B26F-20D8-4D56-A07A-B5942BFD3B68}|BibliotecaLibro.Server.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2C80B26F-20D8-4D56-A07A-B5942BFD3B68}|BibliotecaLibro.Server.csproj|c:\\users\\emiab\\source\\repos\\programacionmovil\\tpnuevo\\bibliotecalibro.server\\entities\\data\\bibliotecadbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2C80B26F-20D8-4D56-A07A-B5942BFD3B68}|BibliotecaLibro.Server.csproj|solutionrelative:entities\\data\\bibliotecadbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{96237A67-D631-4B45-9D3B-9E71D8F76698}|..\\BibliotecaLibro.Shared\\BibliotecaLibro.Shared.csproj|c:\\users\\emiab\\source\\repos\\programacionmovil\\tpnuevo\\bibliotecalibro.shared\\models\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{96237A67-D631-4B45-9D3B-9E71D8F76698}|..\\BibliotecaLibro.Shared\\BibliotecaLibro.Shared.csproj|c:\\users\\emiab\\source\\repos\\programacionmovil\\tpnuevo\\bibliotecalibro.shared\\models\\usuariodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2C80B26F-20D8-4D56-A07A-B5942BFD3B68}|BibliotecaLibro.Server.csproj|c:\\users\\emiab\\source\\repos\\programacionmovil\\tpnuevo\\bibliotecalibro.server\\bibliotecalibro.server.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{2C80B26F-20D8-4D56-A07A-B5942BFD3B68}|BibliotecaLibro.Server.csproj|solutionrelative:bibliotecalibro.server.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2C80B26F-20D8-4D56-A07A-B5942BFD3B68}|BibliotecaLibro.Server.csproj|c:\\users\\emiab\\source\\repos\\programacionmovil\\tpnuevo\\bibliotecalibro.server\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{2C80B26F-20D8-4D56-A07A-B5942BFD3B68}|BibliotecaLibro.Server.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2C80B26F-20D8-4D56-A07A-B5942BFD3B68}|BibliotecaLibro.Server.csproj|c:\\users\\emiab\\source\\repos\\programacionmovil\\tpnuevo\\bibliotecalibro.server\\controllers\\librocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2C80B26F-20D8-4D56-A07A-B5942BFD3B68}|BibliotecaLibro.Server.csproj|solutionrelative:controllers\\librocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2C80B26F-20D8-4D56-A07A-B5942BFD3B68}|BibliotecaLibro.Server.csproj|c:\\users\\emiab\\source\\repos\\programacionmovil\\tpnuevo\\bibliotecalibro.server\\repository\\librorepositorio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2C80B26F-20D8-4D56-A07A-B5942BFD3B68}|BibliotecaLibro.Server.csproj|solutionrelative:repository\\librorepositorio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2C80B26F-20D8-4D56-A07A-B5942BFD3B68}|BibliotecaLibro.Server.csproj|c:\\users\\emiab\\source\\repos\\programacionmovil\\tpnuevo\\bibliotecalibro.server\\repository\\usuariorepositorio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2C80B26F-20D8-4D56-A07A-B5942BFD3B68}|BibliotecaLibro.Server.csproj|solutionrelative:repository\\usuariorepositorio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2C80B26F-20D8-4D56-A07A-B5942BFD3B68}|BibliotecaLibro.Server.csproj|c:\\users\\emiab\\source\\repos\\programacionmovil\\tpnuevo\\bibliotecalibro.server\\mappings\\profileusuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2C80B26F-20D8-4D56-A07A-B5942BFD3B68}|BibliotecaLibro.Server.csproj|solutionrelative:mappings\\profileusuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2C80B26F-20D8-4D56-A07A-B5942BFD3B68}|BibliotecaLibro.Server.csproj|c:\\users\\emiab\\source\\repos\\programacionmovil\\tpnuevo\\bibliotecalibro.server\\mappings\\profilelibro.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2C80B26F-20D8-4D56-A07A-B5942BFD3B68}|BibliotecaLibro.Server.csproj|solutionrelative:mappings\\profilelibro.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2C80B26F-20D8-4D56-A07A-B5942BFD3B68}|BibliotecaLibro.Server.csproj|c:\\users\\emiab\\source\\repos\\programacionmovil\\tpnuevo\\bibliotecalibro.server\\bibliotecalibro.server.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
+      "RelativeMoniker": "D:0:0:{2C80B26F-20D8-4D56-A07A-B5942BFD3B68}|BibliotecaLibro.Server.csproj|solutionrelative:bibliotecalibro.server.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2C80B26F-20D8-4D56-A07A-B5942BFD3B68}|BibliotecaLibro.Server.csproj|c:\\users\\emiab\\source\\repos\\programacionmovil\\tpnuevo\\bibliotecalibro.server\\entities\\models\\libro.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2C80B26F-20D8-4D56-A07A-B5942BFD3B68}|BibliotecaLibro.Server.csproj|solutionrelative:entities\\models\\libro.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2C80B26F-20D8-4D56-A07A-B5942BFD3B68}|BibliotecaLibro.Server.csproj|c:\\users\\emiab\\source\\repos\\programacionmovil\\tpnuevo\\bibliotecalibro.server\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{2C80B26F-20D8-4D56-A07A-B5942BFD3B68}|BibliotecaLibro.Server.csproj|solutionrelative:appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2C80B26F-20D8-4D56-A07A-B5942BFD3B68}|BibliotecaLibro.Server.csproj|c:\\users\\emiab\\source\\repos\\programacionmovil\\tpnuevo\\bibliotecalibro.server\\bibliotecalibro.server.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{2C80B26F-20D8-4D56-A07A-B5942BFD3B68}|BibliotecaLibro.Server.csproj|solutionrelative:bibliotecalibro.server.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2C80B26F-20D8-4D56-A07A-B5942BFD3B68}|BibliotecaLibro.Server.csproj|c:\\users\\emiab\\source\\repos\\programacionmovil\\tpnuevo\\bibliotecalibro.server\\entities\\models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2C80B26F-20D8-4D56-A07A-B5942BFD3B68}|BibliotecaLibro.Server.csproj|solutionrelative:entities\\models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{96237A67-D631-4B45-9D3B-9E71D8F76698}|..\\BibliotecaLibro.Shared\\BibliotecaLibro.Shared.csproj|c:\\users\\emiab\\source\\repos\\programacionmovil\\tpnuevo\\bibliotecalibro.shared\\models\\librodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2C80B26F-20D8-4D56-A07A-B5942BFD3B68}|BibliotecaLibro.Server.csproj|c:\\users\\emiab\\source\\repos\\programacionmovil\\tpnuevo\\bibliotecalibro.server\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{2C80B26F-20D8-4D56-A07A-B5942BFD3B68}|BibliotecaLibro.Server.csproj|solutionrelative:properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 27,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:3:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:4:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:5:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:7:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:8:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:5:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:6:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "BibliotecaLibro.Server",
+              "DocumentMoniker": "C:\\Users\\emiab\\source\\repos\\ProgramacionMovil\\TpNuevo\\BibliotecaLibro.Server\\BibliotecaLibro.Server.csproj",
+              "RelativeDocumentMoniker": "BibliotecaLibro.Server.csproj",
+              "ToolTip": "C:\\Users\\emiab\\source\\repos\\ProgramacionMovil\\TpNuevo\\BibliotecaLibro.Server\\BibliotecaLibro.Server.csproj",
+              "RelativeToolTip": "BibliotecaLibro.Server.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-09-20T01:54:08.424Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "LoginDTO.cs",
+              "DocumentMoniker": "C:\\Users\\emiab\\source\\repos\\ProgramacionMovil\\TpNuevo\\BibliotecaLibro.Shared\\Models\\LoginDTO.cs",
+              "RelativeDocumentMoniker": "..\\BibliotecaLibro.Shared\\Models\\LoginDTO.cs",
+              "ToolTip": "C:\\Users\\emiab\\source\\repos\\ProgramacionMovil\\TpNuevo\\BibliotecaLibro.Shared\\Models\\LoginDTO.cs",
+              "RelativeToolTip": "..\\BibliotecaLibro.Shared\\Models\\LoginDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-19T18:38:03.467Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "C:\\Users\\emiab\\source\\repos\\ProgramacionMovil\\TpNuevo\\BibliotecaLibro.Server\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "appsettings.Development.json",
+              "ToolTip": "C:\\Users\\emiab\\source\\repos\\ProgramacionMovil\\TpNuevo\\BibliotecaLibro.Server\\appsettings.Development.json",
+              "RelativeToolTip": "appsettings.Development.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-09-18T19:57:15.771Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "UsuarioRepositorio.cs",
+              "DocumentMoniker": "C:\\Users\\emiab\\source\\repos\\ProgramacionMovil\\TpNuevo\\BibliotecaLibro.Server\\Repository\\UsuarioRepositorio.cs",
+              "RelativeDocumentMoniker": "Repository\\UsuarioRepositorio.cs",
+              "ToolTip": "C:\\Users\\emiab\\source\\repos\\ProgramacionMovil\\TpNuevo\\BibliotecaLibro.Server\\Repository\\UsuarioRepositorio.cs",
+              "RelativeToolTip": "Repository\\UsuarioRepositorio.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAowDUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-14T15:14:53.866Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "LibroRepositorio.cs",
+              "DocumentMoniker": "C:\\Users\\emiab\\source\\repos\\ProgramacionMovil\\TpNuevo\\BibliotecaLibro.Server\\Repository\\LibroRepositorio.cs",
+              "RelativeDocumentMoniker": "Repository\\LibroRepositorio.cs",
+              "ToolTip": "C:\\Users\\emiab\\source\\repos\\ProgramacionMovil\\TpNuevo\\BibliotecaLibro.Server\\Repository\\LibroRepositorio.cs",
+              "RelativeToolTip": "Repository\\LibroRepositorio.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-14T15:14:50.94Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Usuario.cs",
+              "DocumentMoniker": "C:\\Users\\emiab\\source\\repos\\ProgramacionMovil\\TpNuevo\\BibliotecaLibro.Server\\Entities\\Models\\Usuario.cs",
+              "RelativeDocumentMoniker": "Entities\\Models\\Usuario.cs",
+              "ToolTip": "C:\\Users\\emiab\\source\\repos\\ProgramacionMovil\\TpNuevo\\BibliotecaLibro.Server\\Entities\\Models\\Usuario.cs",
+              "RelativeToolTip": "Entities\\Models\\Usuario.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-14T15:13:39.27Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Libro.cs",
+              "DocumentMoniker": "C:\\Users\\emiab\\source\\repos\\ProgramacionMovil\\TpNuevo\\BibliotecaLibro.Server\\Entities\\Models\\Libro.cs",
+              "RelativeDocumentMoniker": "Entities\\Models\\Libro.cs",
+              "ToolTip": "C:\\Users\\emiab\\source\\repos\\ProgramacionMovil\\TpNuevo\\BibliotecaLibro.Server\\Entities\\Models\\Libro.cs",
+              "RelativeToolTip": "Entities\\Models\\Libro.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-14T15:13:26.969Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "BibliotecaDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\emiab\\source\\repos\\ProgramacionMovil\\TpNuevo\\BibliotecaLibro.Server\\Entities\\Data\\BibliotecaDbContext.cs",
+              "RelativeDocumentMoniker": "Entities\\Data\\BibliotecaDbContext.cs",
+              "ToolTip": "C:\\Users\\emiab\\source\\repos\\ProgramacionMovil\\TpNuevo\\BibliotecaLibro.Server\\Entities\\Data\\BibliotecaDbContext.cs",
+              "RelativeToolTip": "Entities\\Data\\BibliotecaDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-14T15:13:06.157Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "ProfileUsuario.cs",
+              "DocumentMoniker": "C:\\Users\\emiab\\source\\repos\\ProgramacionMovil\\TpNuevo\\BibliotecaLibro.Server\\Mappings\\ProfileUsuario.cs",
+              "RelativeDocumentMoniker": "Mappings\\ProfileUsuario.cs",
+              "ToolTip": "C:\\Users\\emiab\\source\\repos\\ProgramacionMovil\\TpNuevo\\BibliotecaLibro.Server\\Mappings\\ProfileUsuario.cs",
+              "RelativeToolTip": "Mappings\\ProfileUsuario.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-10T20:41:57.131Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "ProfileLibro.cs",
+              "DocumentMoniker": "C:\\Users\\emiab\\source\\repos\\ProgramacionMovil\\TpNuevo\\BibliotecaLibro.Server\\Mappings\\ProfileLibro.cs",
+              "RelativeDocumentMoniker": "Mappings\\ProfileLibro.cs",
+              "ToolTip": "C:\\Users\\emiab\\source\\repos\\ProgramacionMovil\\TpNuevo\\BibliotecaLibro.Server\\Mappings\\ProfileLibro.cs",
+              "RelativeToolTip": "Mappings\\ProfileLibro.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-10T20:36:48.592Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "UsuarioDTO.cs",
+              "DocumentMoniker": "C:\\Users\\emiab\\source\\repos\\ProgramacionMovil\\TpNuevo\\BibliotecaLibro.Shared\\Models\\UsuarioDTO.cs",
+              "RelativeDocumentMoniker": "..\\BibliotecaLibro.Shared\\Models\\UsuarioDTO.cs",
+              "ToolTip": "C:\\Users\\emiab\\source\\repos\\ProgramacionMovil\\TpNuevo\\BibliotecaLibro.Shared\\Models\\UsuarioDTO.cs",
+              "RelativeToolTip": "..\\BibliotecaLibro.Shared\\Models\\UsuarioDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-10T13:05:59.063Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "LibroDTO.cs",
+              "DocumentMoniker": "C:\\Users\\emiab\\source\\repos\\ProgramacionMovil\\TpNuevo\\BibliotecaLibro.Shared\\Models\\LibroDTO.cs",
+              "RelativeDocumentMoniker": "..\\BibliotecaLibro.Shared\\Models\\LibroDTO.cs",
+              "ToolTip": "C:\\Users\\emiab\\source\\repos\\ProgramacionMovil\\TpNuevo\\BibliotecaLibro.Shared\\Models\\LibroDTO.cs",
+              "RelativeToolTip": "..\\BibliotecaLibro.Shared\\Models\\LibroDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-10T13:05:53.619Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "C:\\Users\\emiab\\source\\repos\\ProgramacionMovil\\TpNuevo\\BibliotecaLibro.Server\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "Properties\\launchSettings.json",
+              "ToolTip": "C:\\Users\\emiab\\source\\repos\\ProgramacionMovil\\TpNuevo\\BibliotecaLibro.Server\\Properties\\launchSettings.json",
+              "RelativeToolTip": "Properties\\launchSettings.json",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAqwBoAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-09-03T12:19:15.545Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "BibliotecaLibro.Server.csproj",
+              "DocumentMoniker": "C:\\Users\\emiab\\source\\repos\\ProgramacionMovil\\TpNuevo\\BibliotecaLibro.Server\\BibliotecaLibro.Server.csproj",
+              "RelativeDocumentMoniker": "BibliotecaLibro.Server.csproj",
+              "ToolTip": "C:\\Users\\emiab\\source\\repos\\ProgramacionMovil\\TpNuevo\\BibliotecaLibro.Server\\BibliotecaLibro.Server.csproj",
+              "RelativeToolTip": "BibliotecaLibro.Server.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-09-02T15:17:47.833Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UsuarioController.cs",
+              "DocumentMoniker": "C:\\Users\\emiab\\source\\repos\\ProgramacionMovil\\TpNuevo\\BibliotecaLibro.Server\\Controllers\\UsuarioController.cs",
+              "RelativeDocumentMoniker": "Controllers\\UsuarioController.cs",
+              "ToolTip": "C:\\Users\\emiab\\source\\repos\\ProgramacionMovil\\TpNuevo\\BibliotecaLibro.Server\\Controllers\\UsuarioController.cs",
+              "RelativeToolTip": "Controllers\\UsuarioController.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAADoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-02T12:58:25.484Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "LibroController.cs",
+              "DocumentMoniker": "C:\\Users\\emiab\\source\\repos\\ProgramacionMovil\\TpNuevo\\BibliotecaLibro.Server\\Controllers\\LibroController.cs",
+              "RelativeDocumentMoniker": "Controllers\\LibroController.cs",
+              "ToolTip": "C:\\Users\\emiab\\source\\repos\\ProgramacionMovil\\TpNuevo\\BibliotecaLibro.Server\\Controllers\\LibroController.cs",
+              "RelativeToolTip": "Controllers\\LibroController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-02T12:58:01.119Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "BibliotecaLibro.Server.http",
+              "DocumentMoniker": "C:\\Users\\emiab\\source\\repos\\ProgramacionMovil\\TpNuevo\\BibliotecaLibro.Server\\BibliotecaLibro.Server.http",
+              "RelativeDocumentMoniker": "BibliotecaLibro.Server.http",
+              "ToolTip": "C:\\Users\\emiab\\source\\repos\\ProgramacionMovil\\TpNuevo\\BibliotecaLibro.Server\\BibliotecaLibro.Server.http",
+              "RelativeToolTip": "BibliotecaLibro.Server.http",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAAwBgAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
+              "WhenOpened": "2025-09-02T12:54:24.125Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\emiab\\source\\repos\\ProgramacionMovil\\TpNuevo\\BibliotecaLibro.Server\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\emiab\\source\\repos\\ProgramacionMovil\\TpNuevo\\BibliotecaLibro.Server\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAACAAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-02T12:53:47.103Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\emiab\\source\\repos\\ProgramacionMovil\\TpNuevo\\BibliotecaLibro.Server\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "C:\\Users\\emiab\\source\\repos\\ProgramacionMovil\\TpNuevo\\BibliotecaLibro.Server\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-09-02T12:39:17.947Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 211,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

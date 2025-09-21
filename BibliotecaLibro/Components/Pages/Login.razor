@@ -1,0 +1,198 @@
+﻿@page "/"
+@using BibliotecaLibro.Servicios;
+@using BibliotecaLibro.Shared.Models;
+@using Components.Layout
+@namespace BibliotecaLibro.Components.Pages
+@inject UsuarioServicio _usuarioServicio
+@inject NavigationManager navigationManager
+
+<div class="login-container">
+    <div class="login-card">
+        <img src="Images/logo.png" alt="logo" class="logo" />
+
+        <div class="login-form">
+            <div class="mb-3">
+                <label class="form-label">Usuario</label>
+                <input @bind="nombreUsuario"
+                       placeholder="Inserte Usuario"
+                       class="form-control text-center"
+                       @onkeypress="@((e) => { if (e.Key == "Enter") IniciarSesion(); })" />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Contraseña</label>
+                <input @bind="contraseña"
+                       placeholder="Ingrese Contraseña"
+                       type="password"
+                       class="form-control text-center"
+                       @onkeypress="@((e) => { if (e.Key == "Enter") IniciarSesion(); })" />
+            </div>
+
+            <button class="btn btn-primary btn-login"
+                    @onclick="IniciarSesion"
+                    disabled="@iniciandoSesion">
+                @if (iniciandoSesion)
+                {
+                    <span class="spinner-border spinner-border-sm me-2" role="status"></span>
+                    <span>Iniciando...</span>
+                }
+                else
+                {
+                    <span>Iniciar Sesión</span>
+                }
+            </button>
+
+            @if (!string.IsNullOrEmpty(mensaje))
+            {
+                <div class="alert alert-danger mt-3 text-center">@mensaje</div>
+            }
+
+            @if (cargandoUsuarios)
+            {
+                <div class="alert alert-info mt-3 text-center">Cargando usuarios...</div>
+            }
+        </div>
+    </div>
+</div>
+
+<style>
+    .login-container {
+        min-height: 100vh;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+    }
+
+    .login-card {
+        background: white;
+        border-radius: 20px;
+        padding: 40px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        max-width: 400px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .logo {
+        max-width: 200px;
+        margin-bottom: 30px;
+    }
+
+    .login-form {
+        width: 100%;
+    }
+
+    .form-label {
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 8px;
+        display: block;
+    }
+
+    .form-control {
+        border-radius: 10px;
+        border: 2px solid #e1e5e9;
+        padding: 12px 15px;
+        transition: border-color 0.3s ease;
+    }
+
+        .form-control:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+        }
+
+    .btn-login {
+        width: 100%;
+        padding: 12px;
+        border-radius: 10px;
+        font-weight: 600;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border: none;
+        transition: transform 0.2s ease;
+    }
+
+        .btn-login:hover:not(:disabled) {
+            transform: translateY(-2px);
+        }
+
+        .btn-login:disabled {
+            opacity: 0.7;
+        }
+</style>
+
+@code {
+    private string nombreUsuario;
+    private string contraseña;
+    private string mensaje;
+    private List<UsuarioDTO> usuariosDTO;
+    private bool cargandoUsuarios = false;
+    private bool iniciandoSesion = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await CargarUsuarios();
+    }
+
+    private async Task CargarUsuarios()
+    {
+        cargandoUsuarios = true;
+        try
+        {
+            usuariosDTO = await _usuarioServicio.GetUsuariosAsync();
+        }
+        catch (Exception ex)
+        {
+            mensaje = "Error al cargar los usuarios. Intente nuevamente.";
+            usuariosDTO = new List<UsuarioDTO>(); // Lista vacía para evitar errores
+        }
+        finally
+        {
+            cargandoUsuarios = false;
+        }
+    }
+
+    private async Task IniciarSesion()
+    {
+        if (string.IsNullOrWhiteSpace(nombreUsuario) || string.IsNullOrWhiteSpace(contraseña))
+        {
+            mensaje = "Por favor complete todos los campos.";
+            return;
+        }
+
+        if (usuariosDTO == null || !usuariosDTO.Any())
+        {
+            mensaje = "No se pudieron cargar los usuarios. Intente recargar la página.";
+            return;
+        }
+
+        iniciandoSesion = true;
+        mensaje = string.Empty;
+
+        try
+        {
+            // Simulamos un pequeño delay para mostrar el estado de carga
+            await Task.Delay(500);
+
+            var usuario = usuariosDTO.FirstOrDefault(u =>
+                u.NombreUsuario.Equals(nombreUsuario, StringComparison.OrdinalIgnoreCase) &&
+                u.Contraseña == contraseña);
+
+            if (usuario != null)
+            {
+                // Aquí podrías guardar información del usuario en el estado de la aplicación
+                // Por ejemplo, en un servicio de sesión
+                navigationManager.NavigateTo("/menu");
+            }
+            else
+            {
+                mensaje = "Credenciales incorrectas. Verifique su usuario y contraseña.";
+            }
+        }
+        finally
+        {
+            iniciandoSesion = false;
+        }
+    }
+}

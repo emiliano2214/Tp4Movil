@@ -1,0 +1,179 @@
+﻿@page "/Formlibro"
+@page "/Formlibro/{id:int?}"
+@using BibliotecaLibro.Shared.Models
+@inject BibliotecaLibro.Servicios.LibroServicio LibroServicio
+@inject NavigationManager Navigation
+
+<div style="text-align:center;">
+    <img src="Images/logo.png" alt="Logo" style="max-width:200px" />
+</div>
+
+<h3>@(LibroModel.IdLibro == 0 ? "Agregar Libro" : "Editar Libro")</h3>
+
+<button class="btn btn-primary p-3 mb-3" @onclick="IrAlMenu">
+    <img src="Images/Iconos/Menu.png" width="50" class="me-1" />
+    Menú
+</button>
+
+@if (cargando)
+{
+    <div class="alert alert-info">Cargando...</div>
+}
+else
+{
+    <EditForm Model="@LibroModel" OnValidSubmit="GuardarLibro">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre del Libro:</label>
+            <InputText id="nombre" class="form-control" @bind-Value="LibroModel.NombreLibro" />
+        </div>
+
+        <div class="mb-3">
+            <label for="descripcion" class="form-label">Descripción:</label>
+            <InputTextArea id="descripcion" class="form-control" @bind-Value="LibroModel.Descripcion" rows="4" />
+        </div>
+
+        <div class="mb-3">
+            <label for="fecha" class="form-label">Fecha de Emisión:</label>
+            <InputDate @bind-Value="fechaDateTime" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label for="imagen" class="form-label">Nombre de la Imagen (ej. portada.png):</label>
+            <InputText id="imagen" class="form-control" @bind-Value="LibroModel.Imagen" />
+        </div>
+
+        @if (!string.IsNullOrEmpty(LibroModel.Imagen))
+        {
+            <div class="mb-3">
+                <label class="form-label">Vista previa de la imagen:</label>
+                <div>
+                    <img src="@($"Images/Libros/{LibroModel.Imagen}")" alt="Vista previa" style="max-width: 200px; max-height: 200px;" />
+                </div>
+            </div>
+        }
+
+        <div class="d-flex gap-2">
+            <button type="submit" class="btn btn-success" disabled="@guardando">
+                @if (guardando)
+                {
+                    <span class="spinner-border spinner-border-sm me-2" role="status"></span>
+                    <span>Guardando...</span>
+                }
+                else
+                {
+                    <span>@(LibroModel.IdLibro == 0 ? "Agregar" : "Guardar Cambios")</span>
+                }
+            </button>
+
+            <button type="button" class="btn btn-secondary" @onclick="Cancelar">
+                Cancelar
+            </button>
+        </div>
+    </EditForm>
+}
+
+@code {
+    [Parameter] public int? id { get; set; }
+
+    private LibroDTO LibroModel = new LibroDTO(0, "", "", DateOnly.FromDateTime(DateTime.Today), "");
+    private DateTime fechaDateTime = DateTime.Today;
+    private bool cargando = false;
+    private bool guardando = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await CargarLibro();
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        await CargarLibro();
+    }
+
+    private async Task CargarLibro()
+    {
+        if (id.HasValue && id.Value > 0)
+        {
+            cargando = true;
+            try
+            {
+                var existente = await LibroServicio.GetLibroAsync(id.Value);
+                if (existente != null)
+                {
+                    LibroModel = new LibroDTO(
+                        existente.IdLibro,
+                        existente.NombreLibro,
+                        existente.Descripcion,
+                        existente.FechaEmision,
+                        existente.Imagen
+                    );
+                    // Convertir DateOnly a DateTime para el InputDate
+                    fechaDateTime = existente.FechaEmision.ToDateTime(TimeOnly.MinValue);
+                }
+            }
+            finally
+            {
+                cargando = false;
+            }
+        }
+        else
+        {
+            // Nuevo libro
+            LibroModel = new LibroDTO(0, "", "", DateOnly.FromDateTime(DateTime.Today), "");
+            fechaDateTime = DateTime.Today;
+        }
+    }
+
+    private async Task GuardarLibro()
+    {
+        guardando = true;
+        try
+        {
+            // Convertir DateTime a DateOnly
+            LibroModel = new LibroDTO(
+                LibroModel.IdLibro,
+                LibroModel.NombreLibro,
+                LibroModel.Descripcion,
+                DateOnly.FromDateTime(fechaDateTime),
+                LibroModel.Imagen
+            );
+
+            bool resultado;
+            if (LibroModel.IdLibro == 0)
+            {
+                resultado = await LibroServicio.AddLibroAsync(LibroModel);
+            }
+            else
+            {
+                resultado = await LibroServicio.UpdateLibroAsync(LibroModel);
+            }
+
+            if (resultado)
+            {
+                Navigation.NavigateTo("/libros");
+            }
+            else
+            {
+                // Aquí podrías mostrar un mensaje de error
+                // Por ejemplo, usando un toast o un alert
+            }
+        }
+        finally
+        {
+            guardando = false;
+        }
+    }
+
+    private void Cancelar()
+    {
+        Navigation.NavigateTo("/libros");
+    }
+
+    private void IrAlMenu()
+    {
+        Navigation.NavigateTo("/menu");
+    }
+}

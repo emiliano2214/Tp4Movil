@@ -1,0 +1,91 @@
+﻿@BibliotecaLibro.Server_HostAddress = http://localhost:5100
+
+############################################################
+# 📚 LIBROS
+############################################################
+
+### Obtener todos los libros
+GET {{BibliotecaLibro.Server_HostAddress}}/api/libro
+Accept: application/json
+
+###
+
+### Obtener un libro por ID
+GET {{BibliotecaLibro.Server_HostAddress}}/api/libro/1
+Accept: application/json
+
+###
+
+### Crear un nuevo libro
+POST {{BibliotecaLibro.Server_HostAddress}}/api/libro
+Content-Type: application/json
+
+{
+  "titulo": "Cien años de soledad",
+  "autor": "Gabriel García Márquez",
+  "anio": 1967,
+  "isbn": "978-3-16-148410-0"
+}
+
+###
+
+### Actualizar un libro existente
+PUT {{BibliotecaLibro.Server_HostAddress}}/api/libro/1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "titulo": "Cien años de soledad (Edición revisada)",
+  "autor": "Gabriel García Márquez",
+  "anio": 1970,
+  "isbn": "978-3-16-148410-0"
+}
+
+###
+
+### Eliminar un libro
+DELETE {{BibliotecaLibro.Server_HostAddress}}/api/libro/1
+Accept: application/json
+
+############################################################
+# 👤 USUARIOS
+############################################################
+
+### Obtener todos los usuarios
+GET {{BibliotecaLibro.Server_HostAddress}}/api/usuario
+Accept: application/json
+
+###
+
+### Obtener un usuario por ID
+GET {{BibliotecaLibro.Server_HostAddress}}/api/usuario/1
+Accept: application/json
+
+###
+
+### Crear un nuevo usuario
+POST {{BibliotecaLibro.Server_HostAddress}}/api/usuario
+Content-Type: application/json
+
+{
+  "nombre": "Juan",
+  "email": "juan@example.com"
+}
+
+###
+
+### Actualizar un usuario existente
+PUT {{BibliotecaLibro.Server_HostAddress}}/api/usuario/1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "nombre": "Juan Modificado",
+  "email": "juanmod@example.com"
+}
+
+###
+
+### Eliminar un usuario
+DELETE {{BibliotecaLibro.Server_HostAddress}}/api/usuario/1
+Accept: application/json

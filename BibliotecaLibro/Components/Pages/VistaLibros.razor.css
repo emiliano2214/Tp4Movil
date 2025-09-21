@@ -1,0 +1,93 @@
+﻿    .libros-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        justify-content: center;
+        padding: 20px;
+    }
+
+    .card {
+        width: 160px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transition: transform 0.2s ease;
+    }
+
+    .card:hover {
+        transform: scale(1.02);
+    }
+
+    .card-img {
+        height: 220px; /* Controla el alto */
+        width: auto; /* El ancho se ajusta automáticamente */
+        object-fit: cover;
+        border-bottom: 1px solid #eee;
+    }
+
+    .card-body {
+        padding: 10px;
+        text-align: center;
+    }
+
+    .card-body h4 {
+        font-size: 1rem;
+        margin: 0;
+    }
+
+    .card-body p {
+        font-size: 0.85rem;
+        color: #555;
+        margin: 4px 0;
+    }
+
+    .card-body small {
+        font-size: 0.75rem;
+        color: #888;
+    }
+    .card-actions {
+        margin-top: 8px;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        padding: 0 10px 10px 10px;
+        gap: 6px;
+    }
+
+    .btn-editar,
+    .btn-eliminar {
+        flex: 1;
+        padding: 4px 8px;
+        font-size: 0.8rem;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        color: white;
+    }
+
+    .btn-editar {
+        background-color: #28a745;
+    }
+
+    .btn-eliminar {
+        background-color: #dc3545;
+    }
+    .btn-agregar {
+        margin-bottom: 1rem;
+        padding: 6px 12px;
+        background-color: #007bff; /* azul bootstrap */
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+    }
+
+    .btn-agregar:hover {
+        background-color: #0069d9; /* azul más oscuro */
+    }
