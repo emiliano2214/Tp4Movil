@@ -1,6 +1,8 @@
 ﻿using Microsoft.Extensions.Logging;
 using System.Net.Http;
-using System;
+using System.Net.Security;
+using System.Security.Cryptography.X509Certificates;
+using BibliotecaLibro.Servicios;
 
 namespace BibliotecaLibro
 {
@@ -11,30 +13,26 @@ namespace BibliotecaLibro
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
-                .ConfigureFonts(fonts =>
-                {
-                    fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-                });
+                .ConfigureFonts(f => f.AddFont("OpenSans-Regular.ttf", "OpenSansRegular"));
 
             builder.Services.AddMauiBlazorWebView();
-
 #if DEBUG
             builder.Services.AddBlazorWebViewDeveloperTools();
             builder.Logging.AddDebug();
 #endif
 
+            const string PORT_HTTPS = "7258";
+
             static string ResolveApiBaseUrl()
             {
 #if DEBUG
 #if ANDROID
-                // Emulador Android hablando con el host local
-                return "https://10.0.2.2:7258/api/";
-#else
-                // Windows/Mac en desarrollo
-                return "https://localhost:7258/api/";
+                // 👈 desde el emulador Android, "localhost" es el emulador; usa 10.0.2.2 para llegar a tu PC
+                return $"https://10.0.2.2:{PORT_HTTPS}/api/";
+#else   // WINDOWS / MACCATALYST
+                return $"https://localhost:{PORT_HTTPS}/api/";
 #endif
 #else
-                // Producción en Somee (sin :7258)
                 return "https://bibliotecalibro.somee.com/api/";
 #endif
             }
@@ -43,11 +41,11 @@ namespace BibliotecaLibro
             {
                 var baseUrl = ResolveApiBaseUrl();
 
-#if ANDROID && DEBUG
-                // Solo para desarrollo: aceptar el certificado dev local
+#if DEBUG
+                // Aceptar certificado de desarrollo (CN=localhost) que no coincide con 10.0.2.2 en Android
                 var handler = new HttpClientHandler
                 {
-                    ServerCertificateCustomValidationCallback = (msg, cert, chain, errors) => true
+                    ServerCertificateCustomValidationCallback = (HttpRequestMessage _, X509Certificate2? __, X509Chain? ___, SslPolicyErrors ____) => true
                 };
                 return new HttpClient(handler) { BaseAddress = new Uri(baseUrl) };
 #else
@@ -55,9 +53,8 @@ namespace BibliotecaLibro
 #endif
             });
 
-            // Servicios que usan HttpClient
-            builder.Services.AddSingleton<BibliotecaLibro.Servicios.LibroServicio>();
-            builder.Services.AddSingleton<BibliotecaLibro.Servicios.UsuarioServicio>();
+            builder.Services.AddSingleton<LibroServicio>();
+            builder.Services.AddSingleton<UsuarioServicio>();
 
             return builder.Build();
         }

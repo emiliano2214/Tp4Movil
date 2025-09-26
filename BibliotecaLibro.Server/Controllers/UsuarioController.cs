@@ -1,8 +1,9 @@
-﻿using AutoMapper;
+﻿// BibliotecaLibro.Server/Controllers/UsuarioController.cs
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using BibliotecaLibro.Server.Models;
 using BibliotecaLibro.Server.Data;
+using BibliotecaLibro.Server.Models;
 using BibliotecaLibro.Shared.Models;
 
 namespace BibliotecaLibro.Server.Controllers
@@ -21,25 +22,24 @@ namespace BibliotecaLibro.Server.Controllers
         }
 
         // POST: api/Usuario/Login
-         [HttpPost("Login")]
+        [HttpPost("Login")]
         public async Task<ActionResult<UsuarioDTO>> Login([FromBody] LoginDTO loginDTO)
         {
             try
             {
                 var usuario = await _context.Usuario
-                    .FirstOrDefaultAsync(u => u.NombreUsuario == loginDTO.NombreUsuario
-                                           && u.Contraseña == loginDTO.Contraseña);
+                    .AsNoTracking()
+                    .FirstOrDefaultAsync(u =>
+                        u.NombreUsuario == loginDTO.NombreUsuario &&
+                        u.Contraseña == loginDTO.Contraseña);
 
                 if (usuario == null)
                     return Unauthorized(new { mensaje = "Usuario o contraseña incorrectos" });
 
-                // 🔑 Acá el mapeo correcto: Usuario -> UsuarioDTO
-                var usuarioDTO = _mapper.Map<UsuarioDTO>(usuario);
-
-                // Seguridad: nunca mandar contraseña al cliente
-                usuarioDTO.Contraseña = null;
-
-                return Ok(usuarioDTO);
+                var dto = _mapper.Map<UsuarioDTO>(usuario);
+                // Por seguridad, no devolver contraseña al front
+                dto.Contraseña = string.Empty;
+                return Ok(dto);
             }
             catch (Exception ex)
             {
@@ -51,67 +51,66 @@ namespace BibliotecaLibro.Server.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<UsuarioDTO>>> GetUsuarios()
         {
-            var usuarios = await _context.Usuario.ToListAsync();
-            return _mapper.Map<List<UsuarioDTO>>(usuarios);
+            var entidades = await _context.Usuario.AsNoTracking().ToListAsync();
+            var lista = _mapper.Map<List<UsuarioDTO>>(entidades);
+
+            // Limpiar contraseña en la salida
+            foreach (var u in lista) u.Contraseña = string.Empty;
+
+            return Ok(lista);
         }
 
         // GET: api/Usuario/5
-        [HttpGet("{id}")]
+        [HttpGet("{id:int}")]
         public async Task<ActionResult<UsuarioDTO>> GetUsuario(int id)
         {
-            var usuario = await _context.Usuario.FindAsync(id);
+            var entity = await _context.Usuario.AsNoTracking()
+                .FirstOrDefaultAsync(x => x.IdUsuario == id);
 
-            if (usuario == null)
-                return NotFound();
+            if (entity == null) return NotFound();
 
-            return _mapper.Map<UsuarioDTO>(usuario);
+            var dto = _mapper.Map<UsuarioDTO>(entity);
+            dto.Contraseña = string.Empty; // no exponer
+            return Ok(dto);
         }
 
-        // POST: api/Usuario
+        // POST: api/Usuario  (CREATE con UsuarioCreateDTO)
         [HttpPost]
-        public async Task<ActionResult<UsuarioDTO>> PostUsuario(UsuarioDTO usuarioDTO)
+        public async Task<ActionResult<UsuarioDTO>> PostUsuario([FromBody] UsuarioCreateDTO createDTO)
         {
-            var usuario = _mapper.Map<Usuario>(usuarioDTO);
-
-            _context.Usuario.Add(usuario);
+            var entity = _mapper.Map<Usuario>(createDTO);
+            _context.Usuario.Add(entity);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetUsuario), new { id = usuario.IdUsuario },
-                _mapper.Map<UsuarioDTO>(usuario));
+            var dto = _mapper.Map<UsuarioDTO>(entity);
+            dto.Contraseña = string.Empty; // no exponer
+            return CreatedAtAction(nameof(GetUsuario), new { id = entity.IdUsuario }, dto);
         }
 
-        // PUT: api/Usuario/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutUsuario(int id, UsuarioDTO usuarioDTO)
+        // PUT: api/Usuario/5  (UPDATE con UsuarioUpdateDTO, sin contraseña)
+        [HttpPut("{id:int}")]
+        public async Task<IActionResult> PutUsuario(int id, [FromBody] UsuarioUpdateDTO updateDTO)
         {
-            if (id != usuarioDTO.IdUsuario)
-                return BadRequest();
+            if (id != updateDTO.IdUsuario) return BadRequest();
 
-            var usuario = await _context.Usuario.FindAsync(id);
-            if (usuario == null)
-                return NotFound();
+            var entity = await _context.Usuario.FindAsync(id);
+            if (entity == null) return NotFound();
 
-            // Mapeo DTO -> Entidad (actualiza solo los campos que tenga el DTO)
-            _mapper.Map(usuarioDTO, usuario);
-
-            _context.Entry(usuario).State = EntityState.Modified;
+            _mapper.Map(updateDTO, entity); // No modifica contraseña (ignorada en el perfil)
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-
         // DELETE: api/Usuario/5
-        [HttpDelete("{id}")]
+        [HttpDelete("{id:int}")]
         public async Task<IActionResult> DeleteUsuario(int id)
         {
-            var usuario = await _context.Usuario.FindAsync(id);
-            if (usuario == null)
-                return NotFound();
+            var entity = await _context.Usuario.FindAsync(id);
+            if (entity == null) return NotFound();
 
-            _context.Usuario.Remove(usuario);
+            _context.Usuario.Remove(entity);
             await _context.SaveChangesAsync();
-
             return NoContent();
         }
     }

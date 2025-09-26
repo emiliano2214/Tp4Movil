@@ -2,14 +2,22 @@
 using BibliotecaLibro.Server.Models;
 using BibliotecaLibro.Shared.Models;
 
-namespace BibliotecaLibro.Server.Mappings
+namespace BibliotecaLibro.Server.Mapping
 {
-    public class ProfileUsuario : Profile
+    public class UsuarioProfile : Profile
     {
-        public ProfileUsuario()
+        public UsuarioProfile()
         {
             CreateMap<Usuario, UsuarioDTO>();
-            CreateMap<UsuarioDTO, Usuario>();
+
+            // Create -> Entidad (solo valida miembros de la fuente)
+            CreateMap<UsuarioCreateDTO, Usuario>(MemberList.Source)
+                // .ForMember(d => d.IdUsuario, o => o.Ignore())
+                ;
+
+            // Update -> Entidad (NO tocar contraseña)
+            CreateMap<UsuarioUpdateDTO, Usuario>(MemberList.Source)
+                .ForMember(d => d.Contraseña, o => o.Ignore());
         }
     }
 }

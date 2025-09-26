@@ -1,43 +1,48 @@
+﻿using System.Text.Json;
+using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using BibliotecaLibro.Server.Repository;
 using BibliotecaLibro.Server.Data;
+using BibliotecaLibro.Server.Repository;
+using BibliotecaLibro.Server.Mapping;
 
 namespace BibliotecaLibro.Server
 {
     public class Program
     {
+        private const string CorsPolicy = "AllowAllOrigins";
+
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Controllers
-            builder.Services.AddControllers();
+            builder.Services.AddControllers()
+                .AddJsonOptions(o => o.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase);
 
-            // DbContext
-            builder.Services.AddDbContext<BibliotecaDbContext>(options =>
+            var provider = builder.Configuration["DatabaseProvider"] ?? "Local";
+            var connectionString = provider switch
             {
-                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
-            });
+                "Local" => builder.Configuration.GetConnectionString("LocalConnection"),
+                "Remote" => builder.Configuration.GetConnectionString("RemoteConnection"),
+                _ => throw new Exception("Proveedor de base de datos inválido")
+            } ?? throw new Exception("Connection string no configurada");
 
-            // AutoMapper 12.x
-            builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            builder.Services.AddDbContext<BibliotecaDbContext>(opt =>
+                opt.UseSqlServer(connectionString, sql => sql.EnableRetryOnFailure(5, TimeSpan.FromSeconds(10), null)));
 
-            // Repos
+            // AutoMapper: registrar UNA sola vez apuntando a los assemblies de tus profiles
+            builder.Services.AddAutoMapper(
+                typeof(ProfileLibro).Assembly,
+                typeof(UsuarioProfile).Assembly
+            );
+
             builder.Services.AddScoped<UsuarioRepositorio>();
             builder.Services.AddScoped<LibroRepositorio>();
 
-            // CORS (abrir todo; afinar en prod si ten�s frontend web)
-            builder.Services.AddCors(options =>
+            builder.Services.AddCors(opt =>
             {
-                options.AddPolicy("AllowAllOrigins", policy =>
-                {
-                    policy.AllowAnyOrigin()
-                          .AllowAnyMethod()
-                          .AllowAnyHeader();
-                });
+                opt.AddPolicy(CorsPolicy, p => p.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             });
 
-            // Swagger
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
@@ -48,16 +53,17 @@ namespace BibliotecaLibro.Server
                 app.UseSwagger();
                 app.UseSwaggerUI();
 
-                // Validar config de AutoMapper sin colisi�n de IConfigurationProvider
+                // Validación de perfiles (si algo sigue mal, te dice cuál)
                 using var scope = app.Services.CreateScope();
-                var mapperCfg = scope.ServiceProvider.GetRequiredService<AutoMapper.IConfigurationProvider>();
-                mapperCfg.AssertConfigurationIsValid();
+                var mapper = scope.ServiceProvider.GetRequiredService<IMapper>();
+                mapper.ConfigurationProvider.AssertConfigurationIsValid();
             }
 
-            app.UseHttpsRedirection();
-            app.UseCors("AllowAllOrigins");
-            app.UseAuthorization();
+            if (builder.Configuration.GetValue("UseHttpsRedirection", defaultValue: app.Environment.IsDevelopment()))
+                app.UseHttpsRedirection();
 
+            app.UseCors(CorsPolicy);
+            app.UseAuthorization();
             app.MapControllers();
             app.Run();
         }

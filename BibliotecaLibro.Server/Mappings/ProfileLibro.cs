@@ -2,11 +2,20 @@
 using BibliotecaLibro.Server.Models;
 using BibliotecaLibro.Shared.Models;
 
-public class ProfileLibro : Profile
+namespace BibliotecaLibro.Server.Mapping
 {
-    public ProfileLibro()
+    public class ProfileLibro : Profile
     {
-        CreateMap<Libro, LibroDTO>(); 
-        CreateMap<LibroDTO, Libro>();
+        public ProfileLibro()
+        {
+            // Entidad -> DTO
+            CreateMap<Libro, LibroDTO>();
+
+            // DTO -> Entidad: valida solo miembros de la fuente (DTO)
+            CreateMap<LibroDTO, Libro>(MemberList.Source)
+                // si el Id lo genera la DB, descomentá:
+                // .ForMember(d => d.IdLibro, o => o.Ignore());
+                ;
+        }
     }
 }

@@ -4,8 +4,6 @@ using Microsoft.EntityFrameworkCore;
 using BibliotecaLibro.Server.Models;
 using BibliotecaLibro.Server.Data;
 using BibliotecaLibro.Shared.Models;
-using BibliotecaLibro.Server.Data;
-using BibliotecaLibro.Server.Models;
 
 namespace BibliotecaLibro.Server.Controllers
 {
