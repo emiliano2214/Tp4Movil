@@ -91,3 +91,6 @@ La aplicación sigue el patrón de **separación de responsabilidades**, dividie
 ├── Repository/           # Repositorios de datos
 ├── Models/               # Entidades (Usuario, Libro)
 └── Data/                 # DbContext y configuración de base de datos
+
+
+El proyecto funciona en local
